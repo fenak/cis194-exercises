@@ -16,8 +16,7 @@ parseMessage m = case (words m) of
                     s         -> Unknown m
 
 parse :: String -> [LogMessage]
-parse s = let ls = lines s
-          in map (parseMessage) ls
+parse = map parseMessage . lines
 
 -- Putting the logs in order
 
