@@ -32,8 +32,7 @@ insert logM@(LogMessage _ t _) (Node leftT tLogM@(LogMessage _ tlts _) rightT)
 -- Exercise 3
 
 build :: [LogMessage] -> MessageTree
-build []     = Leaf
-build (x:xs) = insert x (build xs)
+build = foldr insert Leaf
 
 -- Exercise 4
 
@@ -46,3 +45,4 @@ inOrder (Node leftT logM rightT) = inOrder leftT ++ logM:inOrder rightT
 
 whatWentWrong :: [LogMessage] -> [String]
 whatWentWrong xs = [ s | LogMessage (Error x) _ s <- inOrder $ build xs, x >= 50 ]
+
