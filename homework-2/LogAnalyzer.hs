@@ -13,7 +13,7 @@ parseMessage m = case (words m) of
                     "I":x:s   -> LogMessage Info (read x) (unwords s)
                     "W":x:s   -> LogMessage Warning (read x) (unwords s)
                     "E":x:y:s -> LogMessage (Error (read x)) (read y) (unwords s)
-                    s         -> Unknown (unwords s)
+                    s         -> Unknown m
 
 parse :: String -> [LogMessage]
 parse s = let ls = lines s
