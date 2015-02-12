@@ -39,9 +39,9 @@ build (x:xs) = insert x (build xs)
 -- Exercise 4
 
 inOrder :: MessageTree -> [LogMessage]
-inOrder Leaf                      = []
-inOrder (Node Leaf logM Leaf)     = [logM]
-inOrder (Node leftT logM rightT)  = (inOrder leftT) ++ logM:(inOrder rightT)
+inOrder Leaf                     = []
+inOrder (Node Leaf logM Leaf)    = [logM]
+inOrder (Node leftT logM rightT) = (inOrder leftT) ++ logM:(inOrder rightT)
 
 -- Exercise 5
 
