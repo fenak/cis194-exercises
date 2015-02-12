@@ -40,9 +40,9 @@ build (x:xs) = insert x (build xs)
 inOrder :: MessageTree -> [LogMessage]
 inOrder Leaf                     = []
 inOrder (Node Leaf logM Leaf)    = [logM]
-inOrder (Node leftT logM rightT) = (inOrder leftT) ++ logM:(inOrder rightT)
+inOrder (Node leftT logM rightT) = inOrder leftT ++ logM:inOrder rightT
 
 -- Exercise 5
 
 whatWentWrong :: [LogMessage] -> [String]
-whatWentWrong xs = [ s | LogMessage (Error x) _ s <- inOrder (build xs), x >= 50]
+whatWentWrong xs = [ s | LogMessage (Error x) _ s <- inOrder $ build xs, x >= 50 ]
