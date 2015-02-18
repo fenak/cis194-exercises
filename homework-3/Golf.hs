@@ -11,3 +11,11 @@ nthElems :: [a] -> Int -> [a]
 nthElems xs p = case drop (p-1) xs of
                     [] -> []
                     (y:ys) -> y : nthElems ys p
+
+-- Exercise 2
+
+localMaxima :: [Integer] -> [Integer]
+localMaxima (w:x:y:zs)
+    | w < x && x > y = x : localMaxima (x:y:zs)
+    | otherwise      = localMaxima (x:y:zs)
+localMaxima _ = []
